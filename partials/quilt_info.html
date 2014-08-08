@@ -1,0 +1,46 @@
+<strong>About Quilts</strong>
+<div>
+Knowing the underlined terms in particular will help the ordering process.
+</div>
+
+<div>
+Your quilt will be made out of 15” squares called <em>blocks</em>. These will be cut from the shirts (or occasionally other fabrics) you provide. Each side of an adult-sized shirt can provide one block, though if a shirt is very small we may only be able to get one block out of it. Shirts of any material can be used; they do not have to be cotton.
+</div>
+
+<div>
+<em>Sashing</em> is the fabric between blocks on certain quilts. This is an optional step and can make a t-shirt quilt look more formal or fancy. Sashing strips are about an inch and a half wide each, and thus add to both the length and width of the quilt.
+</div>
+
+<div>
+A quilt consists of three parts:
+
+<ol>
+<li>The quilt top. This is pieced together from blocks and sashing (if chosen).</li>
+<li>The batting, which is the fluffy insulation in between the quilt top and backing.</li>
+<li>The backing, which is the fabric on the back of the quilt. This will be a solid color fabric of your choosing. If the quilt is sashed, this should generally match the sashing fabric.</li>
+</ol>
+</div>
+<div>
+Please click on the "samples" button on the toolbar to see some examples of quilts of different sizes, with and without sashing.
+</div>
+<div>
+When you are ready, click "order" on the taskbar to get started on your quilt! You can either build and order your t-shirt quilt online, or have us send you our step-by-step ordering kit.
+</div>
+
+<div>
+<strong>Pricing and Sizes:</strong>
+<div ng-controller="PricelistController as pricelist">
+<table>
+	<tr>
+		<th ng-repeat="h in pricelist.header">{{h}}</th>
+	</tr>
+	<tr ng-repeat="p in pricelist.prices">
+	<td>{{p.blocks}}</td>
+	<td>{{p.block_size}}</td>
+	<td>{{p.dimension}}</td>
+	<td align="right">{{p.price | currency }}</td>
+	<td align="right">{{p.sashing | currency}}</td>
+	</tr>
+</table>
+</div>
+</div>

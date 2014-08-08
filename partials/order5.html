@@ -1,0 +1,22 @@
+<strong>Review Your Order</strong>
+
+
+<div>
+{{orderModel.getDescriptionNarrative()}}
+</div>
+<div>
+	Enter a promo code and click the button
+	<input type="text" name="promo" ng-model="orderModel.promoCode"/>
+	<button ng-click="orderModel.applyPromoCode()">apply promo code</button>
+</div>
+
+<div>
+	<table>
+		<tr ng-repeat="r in orderModel.lineItems">
+			<td>{{r.text}}</td>
+			<td>...</td>
+			<td>{{r.price | currency}}</td>
+		</tr>
+	</table>
+</div>
+

@@ -1,0 +1,13 @@
+<Strong>Thread Option</strong>
+<p>
+<div>
+You can choose to have either single-color thread at no charge or one of our fancier
+variegated (multi-color) threads for {{ctrl.getVariegatedThreadPrice() | currency}}. We will choose
+the thread color that works best with your quilt.
+</div>
+<div ng-repeat="r in orderModel.getThreads()" ng-click="ctrl.setThread($index)">
+<img ng-src="{{r.img}}" />{{r.text}}
+</div>
+
+
+
