@@ -12,11 +12,11 @@
 		<button ng-click="ctrl.next()" ng-disabled="ctrl.cantGoForward()">Next Step</button>
 	</div>
 	<div>
-		<br>size: {{orderModel.size}}
-		<br>backing fabric: {{orderModel.backingColor}}
-		<br>sashing: {{orderModel.sashing}}
-		<br>thread: {{orderModel.thread}}
-		<br>promo: {{orderModel.promoCode}}
+		<br>size: {{getOrderModel().size}}
+		<br>backing fabric: {{getOrderModel().backingColor}}
+		<br>sashing: {{getOrderModel().sashing}}
+		<br>thread: {{getOrderModel().thread}}
+		<br>promo: {{getOrderModel().promoCode}}
 	</div>
 
 	<div>

@@ -6,7 +6,7 @@ Please note throughout the ordering process that some computer monitors may disp
 </div>
 
 <div>
-<div ng-repeat="r in orderModel.getBackingColors()" style="background-color:{{r.color}}"
+<div ng-repeat="r in getOrderModel().getBackingColors()" style="background-color:{{r.color}}"
 	ng-click="ctrl.setBackingColor($index)">
 	{{r.text}}
 </div>

@@ -61,12 +61,12 @@ function OrderModel() {
 	this.setSashing = function(s) { this.sashing = s; };
 	this.setThread = function(t) { this.thread = t; };
 	
-	this.getBackingColors = function() { return backingFabrics; }
-	this.getBackingColor = function() {return backingFabrics[this.backingColor].color; }
-	this.getVariegatedThreadPrice = function() {return threads[1].price}
-	this.getThreads = function() { return threads; }
-	this.getSizes = function() { return sizes; }
-	this.getHeader = function() { return header; }
+	this.getBackingColors = function() { return backingFabrics; };
+	this.getBackingColor = function() {return backingFabrics[this.backingColor].color; };
+	this.getVariegatedThreadPrice = function() {return threads[1].price};
+	this.getThreads = function() { return threads; };
+	this.getSizes = function() { return sizes; };
+	this.getHeader = function() { return header; };
 	
 	this.applyPromoCode = function() {
 		var i;
@@ -78,7 +78,7 @@ function OrderModel() {
 				}
 			}
 		this.genLineItems();
-		}
+		};
 		
 	this.getDescriptionNarrative = function() {
 		dimension = sizes[this.size].dimension;
@@ -99,11 +99,11 @@ function OrderModel() {
 			+ threads[this.thread].text.toLowerCase() 
 			+ " thread."
 			;
-	}
+	};
 	
 	this.getSashingPrice = function() {
 		return sizes[this.size].sashing;
-	}
+	};
 		
 	this.genLineItems = function() {
 		var total = 0;
@@ -139,4 +139,4 @@ function OrderModel() {
 		return this.lineItems;
 	
 	};
-};
+}
