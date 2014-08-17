@@ -1,26 +1,26 @@
 
-<div ng-controller="OrderController as ctrl">
+<div ng-controller="OrderController">
 
-	<button ng-repeat="t in ctrl.getPages()"
-			ng-click="ctrl.setPage(t.page)"
-			ng-disabled="ctrl.tabDisabled(t.page)">
+	<button ng-repeat="t in getPages()"
+			ng-click="setPage(t.page)"
+			ng-disabled="tabDisabled(t.page)">
 				{{t.tabText}}
 	</button>
 
 	<div>
-		<button ng-click="ctrl.previous()" ng-disabled="ctrl.cantGoBack()">Previous Step</button> 
-		<button ng-click="ctrl.next()" ng-disabled="ctrl.cantGoForward()">Next Step</button>
+		<button ng-click="previous()" ng-disabled="cantGoBack()">Previous Step</button>
+		<button ng-click="next()" ng-disabled="cantGoForward()">Next Step</button>
 	</div>
-	<div>
-		<br>size: {{getOrderModel().size}}
-		<br>backing fabric: {{getOrderModel().backingColor}}
-		<br>sashing: {{getOrderModel().sashing}}
-		<br>thread: {{getOrderModel().thread}}
-		<br>promo: {{getOrderModel().promoCode}}
+	<div ng-mouseleave="mouseOut()" ng-mouseover="mouseOver()">
+		<br>size: {{orderModel.getSize()}}
+		<br>backing fabric: {{orderModel.getBackingColor()}}
+		<br>sashing: {{orderModel.getSashing()}}
+		<br>thread: {{orderModel.getThread()}}
+		<br>promo: {{orderModel.getPromoCode()}}
 	</div>
 
 	<div>
-		<ng-include src="ctrl.currentPartial()"></ng-include>
+		<ng-include src="currentPartial()"></ng-include>
 	</div>
 
 </div>

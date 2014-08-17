@@ -11,19 +11,7 @@ The table below lists the quilt sizes that can be made.
 </p>
 Choose your quilt size from the table below and click "Next Step."
 <div>
-<table>
-	<tr>
-		<th>{{getOrderModel().getHeader().blocks}}</th>
-		<th>{{getOrderModel().getHeader().block_size}}</th>
-		<th>{{getOrderModel().getHeader().dimension}}</th>
-		<th>{{getOrderModel().getHeader().price}}</th>
-	</tr>
 
-	<tr ng-repeat="r in getOrderModel().getSizes()" ng-click="ctrl.setSize($index)">
-		<td>{{r.blocks}}</td>
-		<td>{{r.block_size}}</td>
-		<td>{{r.dimension}}</td>
-		<td>{{r.price | currency}}</td>
-	<tr>
-</table>
+<order-table x-order-model="orderModel"></order-table>
+
 </div>

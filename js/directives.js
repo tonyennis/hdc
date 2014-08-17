@@ -10,3 +10,4 @@ angular.module('myApp.directives', [])
             templateUrl: 'partials/sample_quilt.html'
         };
     });
+

@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <th>{{orderModel.getHeader().blocks}}</th>
+        <th>{{orderModel.getHeader().block_size}}</th>
+        <th>{{orderModel.getHeader().dimension}}</th>
+        <th>{{orderModel.getHeader().price}}</th>
+    </tr>
+
+    <tr ng-repeat="r in orderModel.getSizes()" ng-click="orderModel.setSize($index)"
+        ng-class='[highlightclass||"mouseover_clear",($index === orderModel.getSize() ? "selected" : "not_selected")]'
+        ng-mouseenter="highlightclass='mouseover'" ng-mouseleave="highlightclass='mouseover_clear'">
+        <td>{{r.blocks}}</td>
+        <td>{{r.block_size}}</td>
+        <td>{{r.dimension}}</td>
+        <td>{{r.price | currency}}</td>
+    <tr>
+</table>

@@ -28,3 +28,8 @@
   content: "";
   padding: 0;
 }
+
+.mouseover { background-color: red }
+.mouseover_clear { background-color: white}
+.selected {font-style: italic}
+.not_selected {font-style: normal}
