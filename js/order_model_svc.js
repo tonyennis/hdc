@@ -46,9 +46,9 @@ angular.module("myApp.services", [])
             {text: "Setzer", price: -10}
         ];
 
-        var size = null;
         var lineItems = [];
-        var backingColor = null;
+        var size = null;
+        var backingFabric = null;
         var sashing = null;
         var thread = null;
         var shipping = 18;
@@ -63,22 +63,29 @@ angular.module("myApp.services", [])
             getSize: function () {
                 return size;
             },
-            setBackingColor: function (b) {
-                backingColor = b;
+            setBackingFabric: function (b) {
+                backingFabric = b;
             },
-
             setSashing: function (s) {
                 sashing = s;
+            },
+            getSashing: function () {
+                return sashing;
             },
             setThread: function (t) {
                 thread = t;
             },
-
-            getBackingColors: function () {
+            getThread: function () {
+                return thread;
+            },
+            getBackingFabrics: function () {
                 return backingFabrics;
             },
-            getBackingColor: function () {
-                return backingColor ? backingFabrics[backingColor].color : "?";
+            getBackingFabric: function () {
+                return backingFabric;
+            },
+            getBackingFabricColor: function () {
+                return backingFabric ? backingFabrics[backingFabric].color : "?";
             },
             getVariegatedThreadPrice: function () {
                 return threads[1].price;
@@ -118,7 +125,7 @@ angular.module("myApp.services", [])
                     + ". We'll back"
                     + ((sashing) ? " and sash" : "" )
                     + " it with a "
-                    + backingFabrics[backingColor].text.toLowerCase()
+                    + backingFabrics[backingFabric].text.toLowerCase()
                     + " fabric and quilt it using a "
                     + threads[thread].text.toLowerCase()
                     + " thread."
@@ -164,4 +171,5 @@ angular.module("myApp.services", [])
 
             }
         };
-    }]);
+    }])
+;

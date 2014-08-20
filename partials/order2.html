@@ -1,12 +1,15 @@
 <strong>Backing Fabric Color</strong>
 <div>
-Choose the color of the fabric you would like to be used as the back of your quilt.
-<p>
-Please note throughout the ordering process that some computer monitors may display colors slightly inaccurately.
+    Choose the color of the fabric you would like to be used as the back of your quilt.
+    <p/>
+    Please note throughout the ordering process that some computer monitors may display colors slightly inaccurately.
 </div>
 
+<!--<div ng-repeat="r in orderModel.getBackingFabrics()" style="background-color:{{r.color}}"-->
+<!--ng-click="ctrl.setBackingFabric($index)">-->
+<!--{{r.text}}-->
+<!--</div>-->
+
 <div>
-<div ng-repeat="r in getOrderModel().getBackingColors()" style="background-color:{{r.color}}"
-	ng-click="ctrl.setBackingColor($index)">
-	{{r.text}}
+    <backing-fabric x-order-model="orderModel"></backing-fabric>
 </div>

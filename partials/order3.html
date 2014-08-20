@@ -1,20 +1,19 @@
 <strong>Sashing Options</strong>
 
-<div>
-<div ng-click="ctrl.setSashing(false)">
-Option #1 - No Sashing
-<img src="img/no_sashing.png">
-</div>
-<div>
-Option #2 - Sashing with Background Fabric
-<p>
+<table>
+    <tr>
+        <td>No Sashing</td>
+        <td ng-click="orderModel.setSashing(false)"><img src="img/no_sashing.png"></td>
+    </tr>
+    <tr>
+        <td>Sashing with Background Fabric</td>
+        <td ng-click="orderModel.setSashing(true)">
+            <div style="width:75px;height:75px;background-color:{{orderModel.getBackingFabricColor()}}"></div>
+        </td>
+    </tr>
+</table>
 
 To add sashing to your quilt with the same fabric that you selected for the backing (step 2),
-click on the button below and then click 'next'.
-Adding sashing to this size quilt will be an additional charge of {{getOrderModel().getSashingPrice() | currency}}.
-
-<div style="background-color:{{orderModel.getBackingColor()}}" ng-click="ctrl.setSashing(true)">Your Backing Fabric</div>
-
-</div>
-
-</div>
+click on the colored swatch above.
+Adding sashing to this size quilt will be an additional charge of {{orderModel.getSashingPrice() |
+currency}}.

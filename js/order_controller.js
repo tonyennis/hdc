@@ -4,7 +4,7 @@
 angular.module('myApp.order_controller', [])
     .controller('OrderController', ['$scope', 'OrderModelSvc', function ($scope, orderModel) {
 
-        $scope.$watch("orderModel.getSize()", function () {
+        $scope.$watchCollection("[orderModel.getSize(),orderModel.getBackingFabric(),orderModel.getSashing(),orderModel.getThread()]", function () {
             $scope.selectionMade()
         });
         $scope.currentPage = 0;
@@ -21,22 +21,6 @@ angular.module('myApp.order_controller', [])
             {page: 4, tabText: "5. Review Your Order", selectionMade: false, partial: "partials/order5.html", autoAccept: true, preFunction: $scope.genLineItems}
         ];
 
-        $scope.setSize = function setSize(index) {
-            orderModel.setSize(index);
-            $scope.selectionMade();
-        };
-        $scope.setBackingColor = function setBackingColor(index) {
-            orderModel.setBackingColor(index);
-            $scope.selectionMade();
-        };
-        $scope.setSashing = function setSashing(index) {
-            orderModel.setSashing(index);
-            $scope.selectionMade();
-        };
-        $scope.setThread = function setThread(index) {
-            orderModel.setThread(index);
-            $scope.selectionMade();
-        };
         $scope.getPages = function getPages() {
             return $scope.pages;
         };
@@ -73,6 +57,5 @@ angular.module('myApp.order_controller', [])
                 return;
             }
             $scope.pages[$scope.currentPage].selectionMade = true;
-            //           console.log(">>>>>>>>>>> selectionMade " + $scope.currentPage + " " + $scope.orderModel.getSize()+" " + $scope.pages[$scope.currentPage].selectionMade);
         };
     }]);
