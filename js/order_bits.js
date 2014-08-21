@@ -19,4 +19,11 @@ angular.module('myApp.order_bits', [])
             templateUrl: 'partials/order_table.html'
         };
     })
+    .directive('orderNav', function() {
+        return  {
+            replace: true,
+            restrict: 'E',
+            templateUrl: 'partials/order_nav.html'
+        };
+    })
 ;

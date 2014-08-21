@@ -12,7 +12,7 @@
 
 <div>
 	<table>
-		<tr ng-repeat="r in getOrderModel().lineItems">
+		<tr ng-repeat="r in orderModel.getLineItems()">
 			<td>{{r.text}}</td>
 			<td>...</td>
 			<td>{{r.price | currency}}</td>

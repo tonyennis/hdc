@@ -99,6 +99,9 @@ angular.module("myApp.services", [])
             getHeader: function () {
                 return header;
             },
+            getLineItems: function () {
+                return lineItems;
+            },
 
             applyPromoCode: function () {
                 var i;
@@ -155,12 +158,11 @@ angular.module("myApp.services", [])
                     lineItems.push({text: "No sashing", price: 0});
                 }
 
-                if (isNaN(promo)) {
-                    lineItems.push({text: "No promo code", price: 0});
-                }
-                else {
+                if (promo) {
                     lineItems.push({text: "Promo code", price: promos[promo].price});
                     total = total + promos[promo].price;
+                } else {
+                    lineItems.push({text: "No promo code", price: 0});
                 }
 
                 lineItems.push({text: "Shipping", price: shipping});

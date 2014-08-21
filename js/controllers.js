@@ -42,4 +42,5 @@ angular.module('myApp.controllers', [])
                 {blocks: 42, block_size: "6 x 7", dimension: "7' 6\" x 8' 9\"", price: 225, sashing: 150},
                 {blocks: 49, block_size: "7 x 7", dimension: "8' 9\" x 8' 9\"", price: 260, sashing: 170}
             ];
-    }]);
+    }])
+;
