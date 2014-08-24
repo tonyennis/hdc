@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myApp.order_tabs', [])
-    .directive('sizeTable', ['OrderSizeFactory', function (model) {
+    .directive('sizeTable', ['OrderSizeFactory', function () {
         return {
             scope: {},
             replace: true,
@@ -79,9 +79,6 @@ angular.module('myApp.order_tabs', [])
             partial: "partials/order3.html",
             autoAccept: false,
             sashing: undefined,
-            zoot: function () {
-                return "zoot!";
-            },
             price: function () {
                 return (this.sashing && OrderSizeFactory.size >= 0) ? OrderSizeFactory.sizes[OrderSizeFactory.size].sashing : 0
             },
