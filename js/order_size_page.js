@@ -38,7 +38,21 @@ angular.module('myApp.order_tabs', [])
             tabText: "1. Select the Size",
             partial: "partials/order1.html",
             autoAccept: false,
-            size: undefined
+            size: undefined,
+            dimension: function () {
+                return this.sizes[this.size].dimension
+            },
+            blockSize: function () {
+                return this.sizes[this.size].block_size
+            },
+            blocks: function () {
+                return this.sizes[this.size].blocks
+            },
+            lineItem: function () {
+                return {
+                    text: "Your quilt will be " + this.sizes[this.size].block_size + " squares",
+                    price: this.sizes[this.size].price};
+            }
         }
     }).directive('backingFabric', function () {
         return {
@@ -69,6 +83,9 @@ angular.module('myApp.order_tabs', [])
             backingFabric: undefined,
             backingFabricColor: function () {
                 return this.backingFabric >= 0 ? this.backingFabrics[this.backingFabric].color : "?"
+            },
+            backingFabricName: function () {
+                return this.backingFabrics[this.backingFabric].text
             }
         };
     }]).controller('OrderSashingController', ['$scope', 'OrderSashingFactory', function ($scope, OrderSashingFactory) {
@@ -84,9 +101,21 @@ angular.module('myApp.order_tabs', [])
             },
             color: function () {
                 return OrderBackingFabricFactory.backingFabricColor()
+            },
+            lineItem: function () {
+                var text = "No sashing",
+                    price = 0;
+                if (this.sashing) {
+                    text = "Add sashing";
+                    price = OrderSizeFactory.sizes[OrderSizeFactory.size].sashing;
+                }
+                return {text: text, price: price};
+            },
+            narrative: function () {
+                return this.sashing ? " and sash" : ""
             }
         };
-    }]).controller("OrderThreadController", ['$scope', 'OrderThreadFactory', function($scope, OrderThreadFactory){
+    }]).controller("OrderThreadController", ['$scope', 'OrderThreadFactory', function ($scope, OrderThreadFactory) {
         $scope.model = OrderThreadFactory;
     }]).factory('OrderThreadFactory', function () {
         return {
@@ -97,12 +126,91 @@ angular.module('myApp.order_tabs', [])
             threads: [
                 {text: "Solid", img: "img/solid.png", price: 0, narrative: "Standard thread"},
                 {text: "Variegated", img: "img/variegated.png", price: 5, narrative: "Upgrade to variegated thread"}
-            ]
+            ],
+            name: function () {
+                return this.threads[this.thread].text;
+            },
+            lineItem: function () {
+                return {text: this.threads[this.thread].text, price: this.threads[this.thread].price}
+            }
+        };
+    }).controller("OrderReviewController", [
+        '$scope',
+        'OrderReviewFactory',
+        'OrderSizeFactory',
+        'OrderBackingFabricFactory',
+        'OrderSashingFactory',
+        'OrderThreadFactory',
+        function ($scope, ORF, OSiF, OBFF, OSaF, OTF) {
+            $scope.model = ORF;
+            $scope.lineItems = [];
+            $scope.getLineItems = function genLineItems() {
+
+                $scope.lineItems.push(OSiF.lineItem());
+                //lineItems.push(OBFF.lineItem());
+                $scope.lineItems.push(OSaF.lineItem());
+                $scope.lineItems.push(OTF.lineItem());
+                $scope.lineItems.push(ORF.lineItemPromo());
+                $scope.lineItems.push(ORF.lineItemShipping());
+                var total = 0;
+                $scope.lineItems.forEach(function (line) {
+                    total += line.price;
+                });
+                $scope.lineItems.push({text: "Order Total", price: total});
+                return $scope.lineItems;
+            };
+            $scope.genLineItems = function () {
+                $scope.getLineItems();
+                return "";
+            };
+            $scope.getNarrative = function () {
+
+                var dimension = OSiF.dimension();
+                dimension = dimension.replace("x", "wide by");
+                dimension = dimension + " long";
+
+                return    "Your quilt will be made from "
+                    + OSiF.blocks()
+                    + " t-shirts arranged in a "
+                    + OSiF.blockSize()
+                    + " rectangle and will measure about "
+                    + dimension
+                    + ". We'll back"
+                    + OSaF.narrative()
+                    + " it with a "
+                    + OBFF.backingFabricName().toLowerCase()
+                    + " fabric and quilt it using a "
+                    + OTF.name().toLowerCase()
+                    + " thread."
+                    ;
+            };
+        }]).factory('OrderReviewFactory', [function () {
+        return {
+            shipping: 18,
+            promoCode: "",
+            promos: [
+                {text: "Zappa", price: -5},
+                {text: "Setzer", price: -10}
+            ],
+            tabText: "5. Review Your Order",
+            partial: "partials/order5.html",
+            autoAccept: false,
+            lineItemPromo: function () {
+                var text = "No promo code",
+                    price = 0;
+                for (var i = 0; i < this.promos.length; i++) {
+                    if (this.promos[i].text.toLowerCase() === this.promoCode.toLowerCase()) {
+                        text = "Promo code";
+                        price = this.promos[i].price;
+                        break;
+                    }
+                }
+                return { text: text, price: price};
+            },
+            lineItemShipping: function () {
+                return {text: "Shipping", price: this.shipping};
+            }
         }
-    }).factory('OrderReviewFactory', ['OrderModelSvc', function (orderModel) {
-        return {tabText: "5. Review Your Order", partial: "partials/order5.html", autoAccept: false, preFunction: function () {
-            orderModel.genLineItems();
-        }}
     }]
 )
 ;

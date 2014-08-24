@@ -1,13 +1,13 @@
 angular.module("myApp.services", [])
     .factory('OrderModelSvc', [  function () {
 
-//        var header = {
-//            blocks: "# of Blocks",
-//            block_size: "Arrangement of Blocks",
-//            dimension: "Approx. Size",
-//            price: "Price",
-//            sashing: "Additional Price of Sashing"
-//        };
+        var header = {
+            blocks: "# of Blocks",
+            block_size: "Arrangement of Blocks",
+            dimension: "Approx. Size",
+            price: "Price",
+            sashing: "Additional Price of Sashing"
+        };
 //
 //        var sizes =
 //            [
@@ -38,18 +38,18 @@ angular.module("myApp.services", [])
 
 
 
-        var promos = [
-            {text: "Zappa", price: -5},
-            {text: "Setzer", price: -10}
-        ];
+//        var promos = [
+//            {text: "Zappa", price: -5},
+//            {text: "Setzer", price: -10}
+//        ];
 
         var lineItems = [];
 //        var size = null;
 //        var backingFabric = null;
 //        var sashing = null;
 //        var thread = null;
-        var shipping = 18;
-        var promo = null;
+//        var shipping = 18;
+//        var promo = null;
         //var promoCode = NaN; // This means no promo code */
 
         return {
@@ -96,79 +96,79 @@ angular.module("myApp.services", [])
             getHeader: function () {
                 return header;
             },
-            getLineItems: function () {
-                return lineItems;
-            },
-
-            applyPromoCode: function () {
-                var i;
-                for (i = 0; i < promos.length; i++) {
-                    if (promos[i].text.toLowerCase() == promoCode.toLowerCase()) {
-                        promo = i;
-                        break;
-                    }
-                }
-                this.genLineItems();
-            },
-
-            getDescriptionNarrative: function () {
-                var dimension = sizes[size].dimension;
-                dimension = dimension.replace("x", "wide by");
-                dimension = dimension + " long";
-
-                return    "Your quilt will be made from "
-                    + sizes[size].blocks
-                    + " t-shirts arranged in a "
-                    + sizes[size].block_size
-                    + " rectangle and will measure about "
-                    + dimension
-                    + ". We'll back"
-                    + ((sashing) ? " and sash" : "" )
-                    + " it with a "
-                    + backingFabrics[backingFabric].text.toLowerCase()
-                    + " fabric and quilt it using a "
-                    + threads[thread].text.toLowerCase()
-                    + " thread."
-                    ;
-            },
+//            getLineItems: function () {
+//                return lineItems;
+//            },
+//
+//            applyPromoCode: function () {
+//                var i;
+//                for (i = 0; i < promos.length; i++) {
+//                    if (promos[i].text.toLowerCase() == promoCode.toLowerCase()) {
+//                        promo = i;
+//                        break;
+//                    }
+//                }
+//                this.genLineItems();
+//            },
+//
+//            getDescriptionNarrative: function () {
+//                var dimension = sizes[size].dimension;
+//                dimension = dimension.replace("x", "wide by");
+//                dimension = dimension + " long";
+//
+//                return    "Your quilt will be made from "
+//                    + sizes[size].blocks
+//                    + " t-shirts arranged in a "
+//                    + sizes[size].block_size
+//                    + " rectangle and will measure about "
+//                    + dimension
+//                    + ". We'll back"
+//                    + ((sashing) ? " and sash" : "" )
+//                    + " it with a "
+//                    + backingFabrics[backingFabric].text.toLowerCase()
+//                    + " fabric and quilt it using a "
+//                    + threads[thread].text.toLowerCase()
+//                    + " thread."
+//                    ;
+//            },
 
 //            getSashingPrice: function () {
 //                return sizes[size].sashing;
 //            },
 
-            genLineItems: function () {
-                var total = 0;
-                lineItems = [];
-
-
-                lineItems.push({text: "Your quilt will be " + sizes[size].block_size + " squares", price: sizes[size].price});
-                total = sizes[size].price;
-
-                lineItems.push({text: threads[thread].narrative, price: threads[thread].price});
-                total = total + threads[thread].price;
-
-                if (sashing) {
-                    lineItems.push({text: "Add sashing", price: sizes[size].sashing});
-                    total = total + sizes[size].sashing;
-                }
-                else {
-                    lineItems.push({text: "No sashing", price: 0});
-                }
-
-                if (promo) {
-                    lineItems.push({text: "Promo code", price: promos[promo].price});
-                    total = total + promos[promo].price;
-                } else {
-                    lineItems.push({text: "No promo code", price: 0});
-                }
-
-                lineItems.push({text: "Shipping", price: shipping});
-                total = total + shipping;
-
-                lineItems.push({text: "Order Total", price: total});
-                return lineItems;
-
-            }
+//            genLineItems: function () {
+//                var total = 0;
+//                lineItems = [];
+//
+//
+//                lineItems.push({text: "Your quilt will be " + sizes[size].block_size + " squares", price: sizes[size].price});
+//                total = sizes[size].price;
+//
+//                lineItems.push({text: threads[thread].narrative, price: threads[thread].price});
+//                total = total + threads[thread].price;
+//
+//                if (sashing) {
+//                    lineItems.push({text: "Add sashing", price: sizes[size].sashing});
+//                    total = total + sizes[size].sashing;
+//                }
+//                else {
+//                    lineItems.push({text: "No sashing", price: 0});
+//                }
+//
+//                if (promo) {
+//                    lineItems.push({text: "Promo code", price: promos[promo].price});
+//                    total = total + promos[promo].price;
+//                } else {
+//                    lineItems.push({text: "No promo code", price: 0});
+//                }
+//
+//                lineItems.push({text: "Shipping", price: shipping});
+//                total = total + shipping;
+//
+//                lineItems.push({text: "Order Total", price: total});
+//                return lineItems;
+//
+//            }
         };
     }])
 ;

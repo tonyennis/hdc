@@ -1,22 +1,24 @@
-<strong>Review Your Order</strong>
+<h4>Review Your Order</h4>
 
 
-<div>
-{{orderModel.getDescriptionNarrative()}}
+<div ng-controller="OrderReviewController as ctrl">
+{{genLineItems()}}
+    {{getNarrative()}}
+
+    <div>
+        Enter a promo code and click the button
+        <input type="text" name="promo" ng-model="model.promoCode"/>
+        <button ng-click="model.promoCode = promo">apply promo code</button>
+    </div>
+
+    <div>
+        <table>
+            <tr ng-repeat="r in ctrl.getLineItems()">
+                <td>{{r.text}}</td>
+                <td>...</td>
+                <td>{{r.price | currency}}</td>
+            </tr>
+        </table>
+    </div>
+
 </div>
-<div>
-	Enter a promo code and click the button
-	<input type="text" name="promo" ng-model="getOrderModel().promoCode"/>
-	<button ng-click="getOrderModel().applyPromoCode()">apply promo code</button>
-</div>
-
-<div>
-	<table>
-		<tr ng-repeat="r in orderModel.getLineItems()">
-			<td>{{r.text}}</td>
-			<td>...</td>
-			<td>{{r.price | currency}}</td>
-		</tr>
-	</table>
-</div>
-
