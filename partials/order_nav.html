@@ -1,0 +1,12 @@
+<div>
+    <button ng-repeat="t in tabs"
+            ng-click="setPage(t.page)"
+            ng-disabled="t.disabled">
+        {{t.tabText}}
+    </button>
+
+    <div>
+        <button ng-click="previous()" ng-disabled="cantGoBack()">Previous Step</button>
+        <button ng-click="next()" ng-disabled="cantGoForward()">Next Step</button>
+    </div>
+</div>

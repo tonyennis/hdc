@@ -6,13 +6,13 @@
 </div>
 <div>
 	Enter a promo code and click the button
-	<input type="text" name="promo" ng-model="orderModel.promoCode"/>
-	<button ng-click="orderModel.applyPromoCode()">apply promo code</button>
+	<input type="text" name="promo" ng-model="getOrderModel().promoCode"/>
+	<button ng-click="getOrderModel().applyPromoCode()">apply promo code</button>
 </div>
 
 <div>
 	<table>
-		<tr ng-repeat="r in orderModel.lineItems">
+		<tr ng-repeat="r in orderModel.getLineItems()">
 			<td>{{r.text}}</td>
 			<td>...</td>
 			<td>{{r.price | currency}}</td>

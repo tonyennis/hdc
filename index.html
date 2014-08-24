@@ -34,32 +34,24 @@
     <button ng-click="pageSelection.setPage('order')">order</button>
     <button ng-click="pageSelection.setPage('contact us')">contact us</button>
 
-    <!--<tab target="contact us" text="contact us"></tab>-->
-
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'home'" src="'partials/home.html'"></div>-->
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'about'" src="'partials/about.html'"></div>-->
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'samples'" src="'partials/samples.html'"></div>-->
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'quilt info'" src="'partials/quilt_info.html'"></div>-->
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'order'" src="'partials/order.html'"></div>-->
-    <!--<div ng-include ng-show="pageSelection.getPage() == 'contact us'" src="'partials/contact_us.html'"></div>-->
-
 <div> 
  <ng-include src=pageSelection.getPartial()></ng-include>
 </div>
 
 </div>
 
-<!--<div ng-view></div>-->
-
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="js/order_model.js"></script>
 <script src="js/app.js"></script>
+<script src="js/order_model_svc.js"></script>
+<script src="js/order_bits.js"></script>
 <script src="js/controllers.js"></script>
+<script src="js/order_controller.js"></script>
 <script src="js/directives.js"></script>
 <script src="js/tab_member.js"></script>
+<script src="js/order_size_page.js"></script>
 </body>
 </html>

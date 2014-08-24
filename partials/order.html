@@ -1,26 +1,8 @@
+<div ng-controller="OrderController">
 
-<div ng-controller="OrderController as ctrl">
-
-	<button ng-repeat="t in ctrl.getPages()"
-			ng-click="ctrl.setPage(t.page)"
-			ng-disabled="ctrl.tabDisabled(t.page)">
-				{{t.tabText}}
-	</button>
-
+    <order-nav x-order-model="orderModel"></order-nav>
 	<div>
-		<button ng-click="ctrl.previous()" ng-disabled="ctrl.cantGoBack()">Previous Step</button> 
-		<button ng-click="ctrl.next()" ng-disabled="ctrl.cantGoForward()">Next Step</button>
-	</div>
-	<div>
-		<br>size: {{orderModel.size}}
-		<br>backing fabric: {{orderModel.backingColor}}
-		<br>sashing: {{orderModel.sashing}}
-		<br>thread: {{orderModel.thread}}
-		<br>promo: {{orderModel.promoCode}}
-	</div>
-
-	<div>
-		<ng-include src="ctrl.currentPartial()"></ng-include>
+		<ng-include src="currentPartial()"></ng-include>
 	</div>
 
 </div>

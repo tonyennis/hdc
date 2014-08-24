@@ -1,29 +1,17 @@
 
 <div>
 <strong>Let's Build Your Quilt!</strong>
-<div>
+</div>
 Use this step-by-step process to put together your t-shirt quilt. At the end, we'll show you what your quilt will look like.
 
-<strong>Size Selection</strong>
+<h4>Size Selection</h4>
 
 <p>
 The table below lists the quilt sizes that can be made.
-<p>
+</p>
 Choose your quilt size from the table below and click "Next Step."
 <div>
-<table>
-	<tr>
-		<th>{{orderModel.getHeader().blocks}}</th>
-		<th>{{orderModel.getHeader().block_size}}</th>
-		<th>{{orderModel.getHeader().dimension}}</th>
-		<th>{{orderModel.getHeader().price}}</th>
-	</tr>
 
-	<tr ng-repeat="r in orderModel.getSizes()" ng-click="ctrl.setSize($index)">
-		<td>{{r.blocks}}</td>
-		<td>{{r.block_size}}</td>
-		<td>{{r.dimension}}</td>
-		<td>{{r.price | currency}}</td>
-	<tr>
-</table>
+    <size-table></size-table>
+
 </div>
