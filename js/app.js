@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
     'ngRoute',
+    'myApp.order_tabs',
     'myApp.directives',
     'myApp.controllers',
     'myApp.order_controller',

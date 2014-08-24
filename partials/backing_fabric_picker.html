@@ -1,6 +1,6 @@
 <table>
-    <tr ng-repeat="r in orderModel.getBackingFabrics()" ng-click="orderModel.setBackingFabric($index)"
-        ng-class='[highlightclass||"mouseover_clear",($index === orderModel.getBackingFabric() ? "selected" : "not_selected")]'
+    <tr ng-repeat="r in model.backingFabrics" ng-click="model.backingFabric = $index"
+        ng-class='[highlightclass||"mouseover_clear",($index === model.backingFabric ? "selected" : "not_selected")]'
         ng-mouseenter="highlightclass='mouseover'" ng-mouseleave="highlightclass='mouseover_clear'">
         <td>{{r.text}}</td>
         <td style="width:100px;background-color:{{r.color}}"></td>
