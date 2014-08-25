@@ -142,12 +142,21 @@ angular.module('myApp.order_tabs', [])
         'OrderSashingFactory',
         'OrderThreadFactory',
         function ($scope, ORF, OSiF, OBFF, OSaF, OTF) {
+
+            $scope.$watchCollection(function () {
+                return OSiF.size + ":" + OBFF.backingFabric + ":" + OSaF.sashing + ":" + OTF.thread + ":" + ORF.promoCode;
+            }, function () {
+                $scope.genLineItems();
+                $scope.genNarrative();
+            });
+
             $scope.model = ORF;
             $scope.lineItems = [];
-            $scope.getLineItems = function genLineItems() {
+            $scope.narrative = "";
 
+            $scope.genLineItems = function genLineItems() {
+                $scope.lineItems = [];
                 $scope.lineItems.push(OSiF.lineItem());
-                //lineItems.push(OBFF.lineItem());
                 $scope.lineItems.push(OSaF.lineItem());
                 $scope.lineItems.push(OTF.lineItem());
                 $scope.lineItems.push(ORF.lineItemPromo());
@@ -159,17 +168,14 @@ angular.module('myApp.order_tabs', [])
                 $scope.lineItems.push({text: "Order Total", price: total});
                 return $scope.lineItems;
             };
-            $scope.genLineItems = function () {
-                $scope.getLineItems();
-                return "";
-            };
-            $scope.getNarrative = function () {
 
-                var dimension = OSiF.dimension();
+            $scope.genNarrative = function () {
+
+                var dimension = "";// OSiF.dimension();
                 dimension = dimension.replace("x", "wide by");
                 dimension = dimension + " long";
 
-                return    "Your quilt will be made from "
+                $scope.narrative = "Your quilt will be made from "
                     + OSiF.blocks()
                     + " t-shirts arranged in a "
                     + OSiF.blockSize()
@@ -182,7 +188,7 @@ angular.module('myApp.order_tabs', [])
                     + " fabric and quilt it using a "
                     + OTF.name().toLowerCase()
                     + " thread."
-                    ;
+                ;
             };
         }]).factory('OrderReviewFactory', [function () {
         return {

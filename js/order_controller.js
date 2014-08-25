@@ -94,14 +94,6 @@ angular.module('myApp.order_controller', [])
             }, function(){
                 $scope.selectionMade();
                 $scope.buildTabs();
-
-//                console.log("size: ", OrderSizeFactory.size);
-//                console.log("fabric: ", OrderBackingFabricFactory.backingFabric);
-//                console.log("fabric color: ", OrderBackingFabricFactory.backingFabricColor());
-//                console.log("sashing: ",OrderSashingFactory.sashing);
-//                console.log("zoot: ",OrderSashingFactory.zoot());
-//                console.log("price: ",OrderSashingFactory.price());
-//                console.log("color: ",OrderSashingFactory.color());
             });
 
         }]);

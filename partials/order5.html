@@ -2,18 +2,17 @@
 
 
 <div ng-controller="OrderReviewController as ctrl">
-{{genLineItems()}}
-    {{getNarrative()}}
+
+    {{narrative}}
 
     <div>
         Enter a promo code and click the button
         <input type="text" name="promo" ng-model="model.promoCode"/>
-        <button ng-click="model.promoCode = promo">apply promo code</button>
     </div>
 
     <div>
         <table>
-            <tr ng-repeat="r in ctrl.getLineItems()">
+            <tr ng-repeat="r in lineItems">
                 <td>{{r.text}}</td>
                 <td>...</td>
                 <td>{{r.price | currency}}</td>
