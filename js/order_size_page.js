@@ -134,6 +134,28 @@ angular.module('myApp.order_tabs', [])
                 return {text: this.threads[this.thread].text, price: this.threads[this.thread].price}
             }
         };
+    }).controller("OrderPromoController", ['$scope', 'OrderPromoFactory', function ($scope, OrderPromoFactory) {
+        $scope.model = OrderPromoFactory;
+    }]).factory("OrderPromoFactory", function () {
+        return {
+            promoCode: "",
+            promos: [
+                {text: "Zappa", price: -5},
+                {text: "Setzer", price: -10}
+            ],
+            lineItemPromo: function () {
+                var text = "No promo code",
+                    price = 0;
+                for (var i = 0; i < this.promos.length; i++) {
+                    if (this.promos[i].text.toLowerCase() === this.promoCode.toLowerCase()) {
+                        text = "Promo code";
+                        price = this.promos[i].price;
+                        break;
+                    }
+                }
+                return { text: text, price: price};
+            }
+        };
     }).controller("OrderReviewController", [
         '$scope',
         'OrderReviewFactory',
@@ -141,10 +163,11 @@ angular.module('myApp.order_tabs', [])
         'OrderBackingFabricFactory',
         'OrderSashingFactory',
         'OrderThreadFactory',
-        function ($scope, ORF, OSiF, OBFF, OSaF, OTF) {
+        'OrderPromoFactory',
+        function ($scope, ORF, OSiF, OBFF, OSaF, OTF, OPF) {
 
-            $scope.$watchCollection(function () {
-                return OSiF.size + ":" + OBFF.backingFabric + ":" + OSaF.sashing + ":" + OTF.thread + ":" + ORF.promoCode;
+            $scope.$watch(function () {
+                return OSiF.size + ":" + OBFF.backingFabric + ":" + OSaF.sashing + ":" + OTF.thread + ":" + OPF.promoCode;
             }, function () {
                 $scope.genLineItems();
                 $scope.genNarrative();
@@ -159,7 +182,7 @@ angular.module('myApp.order_tabs', [])
                 $scope.lineItems.push(OSiF.lineItem());
                 $scope.lineItems.push(OSaF.lineItem());
                 $scope.lineItems.push(OTF.lineItem());
-                $scope.lineItems.push(ORF.lineItemPromo());
+                $scope.lineItems.push(OPF.lineItemPromo());
                 $scope.lineItems.push(ORF.lineItemShipping());
                 var total = 0;
                 $scope.lineItems.forEach(function (line) {
@@ -171,7 +194,7 @@ angular.module('myApp.order_tabs', [])
 
             $scope.genNarrative = function () {
 
-                var dimension = "";// OSiF.dimension();
+                var dimension = OSiF.dimension();
                 dimension = dimension.replace("x", "wide by");
                 dimension = dimension + " long";
 
@@ -193,26 +216,9 @@ angular.module('myApp.order_tabs', [])
         }]).factory('OrderReviewFactory', [function () {
         return {
             shipping: 18,
-            promoCode: "",
-            promos: [
-                {text: "Zappa", price: -5},
-                {text: "Setzer", price: -10}
-            ],
             tabText: "5. Review Your Order",
             partial: "partials/order5.html",
             autoAccept: false,
-            lineItemPromo: function () {
-                var text = "No promo code",
-                    price = 0;
-                for (var i = 0; i < this.promos.length; i++) {
-                    if (this.promos[i].text.toLowerCase() === this.promoCode.toLowerCase()) {
-                        text = "Promo code";
-                        price = this.promos[i].price;
-                        break;
-                    }
-                }
-                return { text: text, price: price};
-            },
             lineItemShipping: function () {
                 return {text: "Shipping", price: this.shipping};
             }
