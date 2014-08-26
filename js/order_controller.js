@@ -88,7 +88,7 @@ angular.module('myApp.order_controller', [])
             $scope.registerTab(3, OrderThreadFactory);
             $scope.registerTab(4, OrderReviewFactory);
 
-            $scope.$watchCollection(function(){
+            $scope.$watch(function(){
                 return OrderSizeFactory.size+":"+OrderBackingFabricFactory.backingFabric+":"+OrderSashingFactory.sashing+":"+
                     OrderThreadFactory.thread;
             }, function(){
