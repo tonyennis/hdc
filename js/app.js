@@ -13,7 +13,9 @@ angular.module('myApp', [
     'myApp.services',
     'myApp.order-sashing',
     'myApp.order-size',
-    'myApp.order-backing-fabric'
+    'myApp.order-backing-fabric',
+    'myApp.order-thread',
+    'myApp.order-promo'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
