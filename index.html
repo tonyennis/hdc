@@ -10,12 +10,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>Happy Dance Quilting</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
     <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/bootstrap-dist/css/bootstrap.css"/>
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-app="myApp">
@@ -27,16 +28,16 @@
 
 
 <div ng-controller="PageSelectionController as pageSelection">
-    <button ng-click="pageSelection.setPage('home')">home</button>
-    <button ng-click="pageSelection.setPage('about')">about</button>
-    <button ng-click="pageSelection.setPage('samples')">samples</button>
-    <button ng-click="pageSelection.setPage('quilt info')">quilt info</button>
-    <button ng-click="pageSelection.setPage('order')">order</button>
-    <button ng-click="pageSelection.setPage('contact us')">contact us</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('home')">home</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('about')">about</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('samples')">samples</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('quilt info')">quilt info</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('order')">order</button>
+    <button class="btn btn-sm btn-primary" ng-click="pageSelection.setPage('contact us')">contact us</button>
 
-<div> 
- <ng-include src=pageSelection.getPartial()></ng-include>
-</div>
+    <div>
+        <ng-include src=pageSelection.getPartial()></ng-include>
+    </div>
 
 </div>
 

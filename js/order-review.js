@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myApp.order_tabs', [])
+angular.module('myApp.order-review', [])
     .controller("OrderReviewController", [
         '$scope',
         'OrderReviewFactory',

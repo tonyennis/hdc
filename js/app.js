@@ -4,7 +4,6 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
     'ngRoute',
-    'myApp.order_tabs',
     'myApp.directives',
     'myApp.controllers',
     'myApp.order_controller',
@@ -16,7 +15,7 @@ angular.module('myApp', [
     'myApp.order-backing-fabric',
     'myApp.order-thread',
     'myApp.order-promo',
-    'MyApp.order-review'
+    'myApp.order-review'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});

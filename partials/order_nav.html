@@ -1,5 +1,6 @@
 <div>
-    <button ng-repeat="t in tabs"
+    <button
+            ng-repeat="t in tabs"
             ng-click="setPage(t.page)"
             ng-disabled="t.disabled">
         {{t.tabText}}
