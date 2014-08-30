@@ -10,7 +10,13 @@ angular.module('myApp', [
     'myApp.order_controller',
     'myApp.tab_member',
     'myApp.order_bits',
-    'myApp.services'
+    'myApp.services',
+    'myApp.order-sashing',
+    'myApp.order-size',
+    'myApp.order-backing-fabric',
+    'myApp.order-thread',
+    'myApp.order-promo',
+    'MyApp.order-review'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/view1'});
